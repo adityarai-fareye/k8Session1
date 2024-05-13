@@ -1,0 +1,3 @@
+[rules.allowlist]
+description = "ignore commits"
+commits = [ "commit-A", "commit-B"]
