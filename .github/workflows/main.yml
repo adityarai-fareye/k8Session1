@@ -12,3 +12,6 @@ jobs:
         uses: zricethezav/gitleaks-action@v4
         with:
           args: --config-path=gitleaks.toml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
