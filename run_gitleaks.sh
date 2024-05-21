@@ -11,7 +11,7 @@ check_gitleaks_installed() {
         echo "Gitleaks is already installed."
     else
         echo "Installing Gitleaks..."
-        curl -sSL https://github.com/zricethezav/gitleaks/releases/latest/download/gitleaks-linux-amd64.tar.gz | tar -xz -C /usr/local/bin gitleaks
+        curl -sSL https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks_$(uname -s)_$(uname -m).tar.gz | tar -xz -C /usr/local/bin gitleaks
     fi
 }
 
