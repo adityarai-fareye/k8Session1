@@ -11,3 +11,4 @@ gitleaks_scan_pull_request() {
     GITHUB_TOKEN="$GITHUB_TOKEN" gitleaks -c /github/workspace
 }
 
+gitleaks_scan_pull_request
