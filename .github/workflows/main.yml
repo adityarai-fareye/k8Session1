@@ -17,28 +17,4 @@ jobs:
     - name: Run Gitleaks Scan
       run: ./run_gitleaks.sh "${{ secrets.GITHUB_TOKEN }}" "${{ github.event.pull_request.number }}"
 
-# name: Gitleaks Scan
-
-# on: pull_request
-# jobs:
-#   scan:
-#     runs-on: ubuntu-latest  # Or your preferred runner
-
-#     steps:
-#       - uses: actions/checkout@v3
-
-#       - name: Install Node.js (if needed for Gitleaks installation)
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: '16'  # Adjust based on Gitleaks requirements
-
-#       - name: Install Gitleaks
-#         run: |
-#           npm install -g gitleaks  # Or use yarn add -g gitleaks if preferred
-
-#       - name: Set execute permission
-#         run: chmod +x ./run_gitleaks.sh
-      
-#       - name: Run Gitleaks Scan
-#         run: ./run_gitleaks.sh "${{ secrets.GITHUB_TOKEN }}" "${{ github.event.pull_request.number }}"
 
