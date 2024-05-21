@@ -17,6 +17,9 @@
 #     - name: Run Gitleaks Scan
 #       run: ./run_gitleaks.sh "${{ secrets.GITHUB_TOKEN }}" "${{ github.event.pull_request.number }}"
 
+name: Gitleaks Scan
+
+on: pull_request
 jobs:
   scan:
     runs-on: ubuntu-latest  # Or your preferred runner
