@@ -11,8 +11,10 @@ check_gitleaks_installed() {
         echo "Gitleaks is already installed."
     else
         echo "Installing Gitleaks..."
-        curl -sSL https://github.com/zricethezav/gitleaks/releases/latest/download/gitleaks-linux-amd64.tar.gz -o gitleaks.tar.gz
-        tar -xzf gitleaks.tar.gz -C /usr/local/bin
+        curl -sSL https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks-linux-amd64.tar.gz -o gitleaks.tar.gz
+        tar -xzf gitleaks.tar.gz
+        chmod +x gitleaks
+        mv gitleaks /usr/local/bin/
         rm gitleaks.tar.gz
     fi
 }
@@ -30,4 +32,4 @@ git checkout pull_request_branch
 
 # Run gitleaks
 echo "Running Gitleaks..."
-GITHUB_TOKEN="$GITHUB_TOKEN" gitleaks -c /github/workspace
+GITHUB_TOKEN="$GITHUB_TOKEN" gitleaks detect -s /github/workspace
