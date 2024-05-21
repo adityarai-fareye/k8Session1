@@ -2,6 +2,9 @@
 
 set -e
 
+GITHUB_TOKEN="$1"
+PULL_REQUEST_NUMBER="$2"
+
 check_gitleaks_installed() {
     if command -v gitleaks >/dev/null 2>&1; then
         echo "Gitleaks is already installed."
@@ -16,8 +19,6 @@ check_gitleaks_installed() {
 }
 
 execute_gitleaks() {
-    local GITHUB_TOKEN="$1"
-    local PULL_REQUEST_NUMBER="$2"
     echo "Fetching pull request #$PULL_REQUEST_NUMBER..."
     git fetch origin pull/${PULL_REQUEST_NUMBER}/head:pull_request_branch
 
