@@ -32,4 +32,4 @@ git checkout pull_request_branch
 
 # Run gitleaks
 echo "Running Gitleaks..."
-GITHUB_TOKEN="$GITHUB_TOKEN" gitleaks detect -s .
+GITHUB_TOKEN="$GITHUB_TOKEN" gitleaks detect -s . -v
