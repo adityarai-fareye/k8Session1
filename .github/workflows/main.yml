@@ -1,15 +1,6 @@
 name: gitleaks
 on: [pull_request]
 jobs:
- check-git-version:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Check Git version
-        run: git --version
  gitleaks_scan:
     name: Gitleaks
     runs-on: ubuntu-latest
