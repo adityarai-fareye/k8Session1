@@ -21,30 +21,14 @@ check_gitleaks_installed() {
 }
 
 execute_gitleaks() {
-        echo "Running Gitleaks..."
-    echo "gitleaks cmd: gitleaks detect --redact -v --exit-code=2 --report-format=sarif --report-path=results.sarif --log-level=debug --log-opts=--no-merges --first-parent $first_commit_sha^..$last_commit_sha"
-    echo "Running Gitleaks...2"
+    echo "gitleaks cmd: gitleaks detect --redact -v --exit-code=2 --log-level=debug --log-opts=--no-merges $first_commit_sha^..$last_commit_sha"
+    echo "Running Gitleaks..."
     gitleaks detect --redact -v --exit-code=2 --log-level=debug --log-opts=--no-merges $first_commit_sha^..$last_commit_sha
-    # gitleaks detect --source . --log-opts="--all $first_commit_sha..$last_commit_sha
-    # echo "Fetching pull request #$PULL_REQUEST_NUMBER..."
-    # git fetch origin pull/${PULL_REQUEST_NUMBER}/head:pull_request_branch
-
-    # echo "Checking out pull request branch..."
-    # git checkout pull_request_branch
-
-    # echo "Running Gitleaks..."
-    # GITHUB_TOKEN="$GITHUB_TOKEN" gitleaks detect -s . -v
 }
 
 REPO="${GITHUB_REPOSITORY}"
-# PR_NUMBER="${GITHUB_EVENT_PULL_REQUEST_NUMBER}"
-# GITHUB_TOKEN="${GITHUB_TOKEN}"
-
-#!/bin/bash
-
-# Define a method to handle the fetching and processing of commits
 fetch_first_and_last_commit_for_pull_request() {
-    echo "Repository: $repo"
+    echo "Repository: $REPO"
     echo "Pull Request Number: $PULL_REQUEST_NUMBER"
     echo "GitHub Token: $GITHUB_TOKEN"
 
