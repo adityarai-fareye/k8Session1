@@ -41,7 +41,7 @@ function git_commit_check(){
     echo "$GITHUB_REF GITHUB_REF"
     if [ ! -z "$current_tag_version" ]; then
     echo "$current_tag_version"
-    echo "last_commit_sha = $last_commit_sha"
+    echo "44 last_commit_sha = $last_commit_sha"
     last_commit_sha=$current_tag_version
     elif [ "$(helper_is_scheduled_run)" == "true" ]; then
     if [ ! -f .devops/last_commit_hash.txt ]; then
@@ -49,23 +49,23 @@ function git_commit_check(){
         last_commit_sha=$(cat .devops/last_commit_hash.txt | xargs)
         first_run="true"
             echo "$current_tag_version"
-            echo "last_commit_sha = $last_commit_sha"
+            echo "52 last_commit_sha = $last_commit_sha"
     else
         last_commit_sha=$(cat .devops/last_commit_hash.txt | xargs)
         git_update_last_commit_hash
             echo "$current_tag_version"
-        echo "last_commit_sha = $last_commit_sha"
+        echo "57 last_commit_sha = $last_commit_sha"
     fi
     else
     last_commit_sha=$GITHUB_SHA
         echo "$current_tag_version"
-    echo "last_commit_sha = $last_commit_sha"
+    echo "62 last_commit_sha = $last_commit_sha"
     echo "$GITHUB_SHA GITHUB_SHA"
     fi
     if [ ! "$first_run" == "true" ] && [ "$(helper_is_scheduled_run)" == "true" ] ; then
     git_check_if_change_exists "$last_commit_sha"
     fi
-    echo "last_commit_hash=$last_commit_sha" >> $GITHUB_ENV
+    echo "68 $last_commit_sha" >> $GITHUB_ENV
     export "last_commit_hash=$last_commit_sha"
     if [ -z "$last_commit_hash" ]; then
     echo "no commits found"
