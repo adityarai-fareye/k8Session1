@@ -10,15 +10,15 @@ jobs:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: |
         echo "$GITHUB_CONTEXT"
-  # gitleaks_scan:
-  #   name: Gitleaks
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v3
+  gitleaks_scan:
+    name: Gitleaks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-  #     - name: Set execute permission
-  #       run: chmod +x ./run_gitleaks.sh
+      - name: Set execute permission
+        run: chmod +x ./run_gitleaks.sh
 
-  #     - name: Run Gitleaks Scan
-  #       run: ./run_gitleaks.sh "${{ secrets.GITHUB_TOKEN }}" "${{ github.event}}"
+      - name: Run Gitleaks Scan
+        run: ./run_gitleaks.sh "${{ secrets.GITHUB_TOKEN }}" "${{ github.event}}"
