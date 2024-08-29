@@ -42,12 +42,28 @@ echo "$PULL_REQUEST_NUMBER"
 commits=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
   "https://api.github.com/repos/adityarai-fareye/k8Session1/pulls/$PULL_REQUEST_NUMBER/commits")
 
-echo "$commits commits"
+# echo "$commits commits"
 # Extract the first commit SHA using jq
-# first_commit_sha=$(echo "$commits" | jq -r '.[0].sha')
+first_commit_sha=$(echo "$commits" | jq -r '.[0].sha')
+
+if echo "$commits" | jq -e '.[0]' > /dev/null 2>&1; then
+    # Extract the last commit SHA using jq
+    last_commit_sha=$(echo "$commits" | jq -r '.[-1].sha')
+    
+    # Print the last commit SHA
+    # echo "The last commit SHA is: $last_commit_sha"
+
+    # Optionally, export the last commit SHA to an environment variable
+    echo "last_commit_sha=$last_commit_sha" >> $GITHUB_ENV
+else
+    echo "Error: Unexpected response structure or no commits found."
+    echo "$commits" | jq .
+    exit 1
+fi
 
 # Print the first commit SHA
 echo "The first commit SHA is: $first_commit_sha"
+echo "The last commit SHA is: $last_commit_sha"
 
 # Optionally, export the first commit SHA to an environment variable
 # echo "first_commit_sha=$first_commit_sha" >> $GITHUB_ENV
