@@ -34,6 +34,9 @@ REPO="${GITHUB_REPOSITORY}"
 PR_NUMBER="${GITHUB_EVENT_PULL_REQUEST_NUMBER}"
 GITHUB_TOKEN="${GITHUB_TOKEN}"
 
+echo "$REPO"
+echo "$PR_NUMBER"
+echo "$GITHUB_TOKEN"
 # Fetch the commits from the pull request using the GitHub API
 commits=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
   "https://api.github.com/repos/$REPO/pulls/$PR_NUMBER/commits")
