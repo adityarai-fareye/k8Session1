@@ -10,7 +10,7 @@ jobs:
 
       - name: Check Git version
         run: git --version
-gitleaks_scan:
+ gitleaks_scan:
     name: Gitleaks
     runs-on: ubuntu-latest
 
