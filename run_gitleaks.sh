@@ -16,11 +16,14 @@ check_gitleaks_installed() {
         chmod +x gitleaks
         mv gitleaks /usr/local/bin/
         rm gitleaks.tar.gz
+        echo "Gitleaks installed"
     fi
 }
 
 execute_gitleaks() {
-    gitleaks detect --redact -v --exit-code=2 --report-format=sarif --report-path=results.sarif --log-level=debug --log-opts=--no-merges --first-parent $first_commit_sha^...$last_commit_sha
+        # echo "Running Gitleaks..."
+    echo "gitleaks detect --redact -v --exit-code=2 --report-format=sarif --report-path=results.sarif --log-level=debug --log-opts=--no-merges --first-parent $first_commit_sha^..$last_commit_sha"
+    gitleaks detect --redact -v --exit-code=2 --report-format=sarif --report-path=results.sarif --log-level=debug --log-opts=--no-merges --first-parent $first_commit_sha^..$last_commit_sha
     # echo "Fetching pull request #$PULL_REQUEST_NUMBER..."
     # git fetch origin pull/${PULL_REQUEST_NUMBER}/head:pull_request_branch
 
