@@ -32,6 +32,7 @@ PULL_REQUEST_NUMBER="$2"
 function git_commit_check(){
     cd ${PWD}
     echo "${PWD}"
+    echo "$GITHUB_ENV GITHUB_ENV"
     last_commit_sha=""
     ## if flow trigger is due to tag
     echo "inside git commit check"
