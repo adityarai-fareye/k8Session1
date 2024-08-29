@@ -3,7 +3,8 @@
 set -e
 
 GITHUB_TOKEN="$1"
-PULL_REQUEST_NUMBER="$2"
+# PULL_REQUEST_NUMBER="$2"
+GITHUB_EVENT="$2"
 
 # check_gitleaks_installed() {
 #     if command -v gitleaks >/dev/null 2>&1; then
@@ -33,6 +34,7 @@ function git_commit_check(){
     cd ${PWD}
     echo "${PWD}"
     echo "$GITHUB_ENV GITHUB_ENV"
+    echo "GITHUB_EVENT $GITHUB_EVENT"s
     last_commit_sha=""
     ## if flow trigger is due to tag
     echo "inside git commit check"
@@ -65,7 +67,7 @@ function git_commit_check(){
     if [ ! "$first_run" == "true" ] && [ "$(helper_is_scheduled_run)" == "true" ] ; then
     git_check_if_change_exists "$last_commit_sha"
     fi
-    echo "68 $last_commit_sha" >> $GITHUB_ENV
+     echo "68 last_commit_hash=$last_commit_sha" >> $GITHUB_ENV
     export "last_commit_hash=$last_commit_sha"
     if [ -z "$last_commit_hash" ]; then
     echo "no commits found"
