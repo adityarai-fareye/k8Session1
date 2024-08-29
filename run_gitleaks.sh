@@ -33,6 +33,7 @@ function git_commit_check(){
     cd ${PWD}
     last_commit_sha=""
     ## if flow trigger is due to tag
+    echo "inside git commit check"
     [ "$(echo "$GITHUB_REF"  | grep -i  tags)" ] && { current_tag_version=${GITHUB_REF/refs\/tags\//} ;}
     if [ ! -z "$current_tag_version" ]; then
     last_commit_sha=$current_tag_version
