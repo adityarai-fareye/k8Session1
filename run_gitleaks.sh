@@ -38,14 +38,15 @@ GITHUB_TOKEN="${GITHUB_TOKEN}"
 commits=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
   "https://api.github.com/repos/$REPO/pulls/$PR_NUMBER/commits")
 
+echo "$commits commits"
 # Extract the first commit SHA using jq
-first_commit_sha=$(echo "$commits" | jq -r '.[0].sha')
+# first_commit_sha=$(echo "$commits" | jq -r '.[0].sha')
 
 # Print the first commit SHA
 echo "The first commit SHA is: $first_commit_sha"
 
 # Optionally, export the first commit SHA to an environment variable
-echo "first_commit_sha=$first_commit_sha" >> $GITHUB_ENV
+# echo "first_commit_sha=$first_commit_sha" >> $GITHUB_ENV
 
 # function git_commit_check(){
 #     cd ${PWD}
