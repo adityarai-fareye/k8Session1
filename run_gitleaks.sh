@@ -37,6 +37,7 @@ fetch_first_and_last_commit_for_pull_request() {
       "https://api.github.com/repos/adityarai-fareye/k8Session1/pulls/$PULL_REQUEST_NUMBER/commits")
 
     # Check if the response is an array and contains elements
+    echo $commits
     if echo "$commits" | jq -e '.[0]' > /dev/null 2>&1; then
         first_commit_sha=$(echo "$commits" | jq -r '.[0].sha')
         
