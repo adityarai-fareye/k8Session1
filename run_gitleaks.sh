@@ -31,23 +31,33 @@ PULL_REQUEST_NUMBER="$2"
 
 function git_commit_check(){
     cd ${PWD}
+    echo "${PWD}"
     last_commit_sha=""
     ## if flow trigger is due to tag
     echo "inside git commit check"
     [ "$(echo "$GITHUB_REF"  | grep -i  tags)" ] && { current_tag_version=${GITHUB_REF/refs\/tags\//} ;}
     if [ ! -z "$current_tag_version" ]; then
+    echo "$current_tag_version"
+    echo "last_commit_sha = $last_commit_sha"
     last_commit_sha=$current_tag_version
     elif [ "$(helper_is_scheduled_run)" == "true" ]; then
     if [ ! -f .devops/last_commit_hash.txt ]; then
         git_update_last_commit_hash
         last_commit_sha=$(cat .devops/last_commit_hash.txt | xargs)
         first_run="true"
+            echo "$current_tag_version"
+            echo "last_commit_sha = $last_commit_sha"
     else
         last_commit_sha=$(cat .devops/last_commit_hash.txt | xargs)
         git_update_last_commit_hash
+            echo "$current_tag_version"
+        echo "last_commit_sha = $last_commit_sha"
     fi
     else
     last_commit_sha=$GITHUB_SHA
+        echo "$current_tag_version"
+    echo "last_commit_sha = $last_commit_sha"
+    echo "$GITHUB_SHA GITHUB_SHA"
     fi
     if [ ! "$first_run" == "true" ] && [ "$(helper_is_scheduled_run)" == "true" ] ; then
     git_check_if_change_exists "$last_commit_sha"
