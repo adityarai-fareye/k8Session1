@@ -3,8 +3,8 @@
 set -e
 
 GITHUB_TOKEN="$1"
-# PULL_REQUEST_NUMBER="$2"
-GITHUB_EVENT="$2"
+PULL_REQUEST_NUMBER="$2"
+# GITHUB_EVENT="$2"
 
 # check_gitleaks_installed() {
 #     if command -v gitleaks >/dev/null 2>&1; then
@@ -31,15 +31,16 @@ GITHUB_EVENT="$2"
 # }
 
 REPO="${GITHUB_REPOSITORY}"
-PR_NUMBER="${GITHUB_EVENT_PULL_REQUEST_NUMBER}"
-GITHUB_TOKEN="${GITHUB_TOKEN}"
+# PR_NUMBER="${GITHUB_EVENT_PULL_REQUEST_NUMBER}"
+# GITHUB_TOKEN="${GITHUB_TOKEN}"
 
 echo "$REPO"
 echo "$PR_NUMBER"
 echo "$GITHUB_TOKEN"
+echo "$PULL_REQUEST_NUMBER"
 # Fetch the commits from the pull request using the GitHub API
 commits=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-  "https://api.github.com/repos/$REPO/pulls/$PR_NUMBER/commits")
+  "https://api.github.com/repos/adityarai-fareye/k8Session1/pulls/$PULL_REQUEST_NUMBER/commits")
 
 echo "$commits commits"
 # Extract the first commit SHA using jq
