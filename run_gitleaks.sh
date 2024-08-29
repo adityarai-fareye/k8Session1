@@ -34,7 +34,7 @@ function git_commit_check(){
     cd ${PWD}
     echo "${PWD}"
     echo "$GITHUB_ENV GITHUB_ENV"
-    echo "GITHUB_EVENT $GITHUB_EVENT"s
+    echo "GITHUB_EVENT $GITHUB_EVENT"
     last_commit_sha=""
     ## if flow trigger is due to tag
     echo "inside git commit check"
