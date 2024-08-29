@@ -1,15 +1,15 @@
 name: gitleaks
 on: [pull_request]
 jobs:
-  # printJob:    
-  #   name: Print event
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: Dump GitHub context
-  #     env:
-  #       GITHUB_CONTEXT: ${{ toJson(github) }}
-  #     run: |
-  #       echo "$GITHUB_CONTEXT"
+ check-git-version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Check Git version
+        run: git --version
   gitleaks_scan:
     name: Gitleaks
     runs-on: ubuntu-latest
