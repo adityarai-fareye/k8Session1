@@ -32,7 +32,6 @@ fetch_first_and_last_commit_for_pull_request() {
     echo "Pull Request Number: $PULL_REQUEST_NUMBER"
     echo "GitHub Token: $GITHUB_TOKEN"
 
-    # Fetch the commits from the pull request using the GitHub API
     commits=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
       "https://api.github.com/repos/adityarai-fareye/k8Session1/pulls/$PULL_REQUEST_NUMBER/commits")
 
