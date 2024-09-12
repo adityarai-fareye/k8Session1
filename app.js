@@ -3,6 +3,7 @@ const app = express()
 const PORT = 3333
 
 app.get('/', (request, response) => {
+    console.log(request)
     response.send('Default Route')
 })
 
