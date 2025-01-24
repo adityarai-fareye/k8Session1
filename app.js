@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const PORT = 3333
-const EVENT_NUMBER = 1;
+const EVENT_NUMBER = 2;
 
 app.get('/', (request, response) => {
     // console.log('0')
