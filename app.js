@@ -1,9 +1,10 @@
 const express = require('express')
 const app = express()
 const PORT = 3333
+const PORT1 = 3000
+
 
 app.get('/', (request, response) => {
-    console.log("1")
     response.send('Default Route')
 })
 
